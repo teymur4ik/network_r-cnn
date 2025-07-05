@@ -1,0 +1,23 @@
+dataset:
+  train_images: data/train/images
+  train_anns:   data/train/annotations_train.json
+  val_images:   data/val/images
+  val_anns:     data/val/annotations_val.json
+
+model:
+  num_classes: 2        # фон + «ошибка»
+  pretrained: true
+
+train:
+  device: 'cuda'
+  lr: 0.005
+  batch_size: 4
+  epochs: 20
+  output_dir: 'checkpoints'
+
+infer:
+  device: 'cuda'
+  ckpt: 'checkpoints/model_best.pth'
+  image_path: 'data/test/images/example.png'
+  output_path: 'outputs/result.png'
+  score_thresh: 0.5
